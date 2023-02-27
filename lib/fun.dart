@@ -412,11 +412,11 @@ class UserDetails extends GetConnect {
   List SearchedUserTodoList = [].obs;
   List SearchedUserTodoWithNameList = [].obs;
   var _page = 1.obs;
+  var postCount = 0.obs;
   final err = false.obs;
   final dataFetched = false.obs;
 
   increment() => _page++;
-
   length() => UserDetailsList.length;
 
   Future<void> getUser() async {
@@ -486,6 +486,7 @@ class UserDetails extends GetConnect {
               "body": i["body"],
             },
           );
+          postCount++;
         } else {
           SearchedUserPostWithNameList.add(
             {

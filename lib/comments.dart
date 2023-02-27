@@ -28,7 +28,7 @@ class _CommentsState extends State<Comments> {
   List userDetails = [];
   List<dynamic> _UserComments = [];
   bool todo = false;
-  late bool getcomments;
+  bool getcomments = true;
   late bool addcomments;
   bool entry = true;
   bool err = false;
@@ -51,8 +51,7 @@ class _CommentsState extends State<Comments> {
             }
             setState(
               () {
-                stateTextWithIcon =
-                    getcomments ? ButtonState.success : ButtonState.fail;
+                stateTextWithIcon = ButtonState.idle;
               },
             );
           },
@@ -85,8 +84,7 @@ class _CommentsState extends State<Comments> {
             await userPost();
             setState(
               () {
-                stateTextWithIcon1 =
-                    addcomments ? ButtonState.success : ButtonState.fail;
+                stateTextWithIcon1 = ButtonState.idle;
               },
             );
           },
@@ -262,7 +260,7 @@ class _CommentsState extends State<Comments> {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.3), //Offset
                   blurRadius: 80.0,
-                ),//BoxShadow
+                ), //BoxShadow
               ],
             ),
             child: Container(
@@ -279,8 +277,13 @@ class _CommentsState extends State<Comments> {
                             const SizedBox(
                               height: 20,
                             ),
-                            TextFormFieldcomponent(Icons.numbers,
-                                "Enter Post ID", false, false, id),
+                            TextFormFieldcomponent(
+                              Icons.numbers,
+                              "Enter Post ID",
+                              false,
+                              false,
+                              id,
+                            ),
                             const SizedBox(
                               height: 30,
                             ),
@@ -338,7 +341,7 @@ class _CommentsState extends State<Comments> {
                                                             : userDetails[index]
                                                                         ["body"]
                                                                     .length *
-                                                                0.9,
+                                                                0.65,
                                                         child: InkWell(
                                                           highlightColor: Colors
                                                               .transparent,
@@ -374,11 +377,6 @@ class _CommentsState extends State<Comments> {
                                                               ),
                                                             ),
                                                             child: ListTile(
-                                                              leading: Text(
-                                                                userDetails[index]
-                                                                        ["id"]
-                                                                    .toString(),
-                                                              ),
                                                               title: Text(
                                                                 userDetails[
                                                                         index]
@@ -451,11 +449,6 @@ class _CommentsState extends State<Comments> {
                                                                       ),
                                                                       child:
                                                                           ListTile(
-                                                                        leading:
-                                                                            Text(
-                                                                          _UserComments[0][index]["id"]
-                                                                              .toString(),
-                                                                        ),
                                                                         title:
                                                                             Text(
                                                                           _UserComments[0][index]

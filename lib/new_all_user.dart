@@ -290,7 +290,7 @@ class CustomSearchDelegate extends SearchDelegate {
               child: CircularProgressIndicator(),
             )
           : UD.err.value
-              ? CustomErrorText(textTitle: "No User Found")
+              ? CustomErrorText(textTitle: "No result found for '$query'")
               : Column(
                   children: [
                     const SizedBox(
@@ -537,8 +537,9 @@ class CustomSearchDelegate extends SearchDelegate {
                 },
               )
             : const Center(
-                child: CustomErrorText(
-                  textTitle: "Click Search from keyboard to find user",
+                child: Text(
+                  "Click Search to get all the results",
+                  style: TextStyle(fontSize: 22.0),
                 ),
               )
         : const Text(
