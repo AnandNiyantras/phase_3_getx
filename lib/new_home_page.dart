@@ -16,15 +16,16 @@ import 'updateUser.dart';
 import 'fun.dart';
 
 getterData() async {
-  List Data = [];
-  var temp = await getData();
-  Data.add(json.decode(temp).split(","));
-  print(Data[0][0]["name"]);
-    // globUserDetail['name'] = Data[0]['name'];
-    // // globUserDetail['id'] = Data[0]['id']!;
-    // globUserDetail['email'] = Data[0]['email'];
-    // globUserDetail['status'] = Data[0]['status'];
-    // globUserDetail['gender'] = Data[0]['gender'];
+
+  String temp = await getData();
+  Map<String, dynamic> Data = jsonDecode(temp) as Map<String, dynamic>;
+  print(Data);
+  // print(Data[0][0]["name"]);
+    globUserDetail['name'] = Data['name'];
+    globUserDetail['id'] = Data['id']!;
+    globUserDetail['email'] = Data['email'];
+    globUserDetail['status'] = Data['status'];
+    globUserDetail['gender'] = Data['gender'];
     print(globUserDetail);
   // if (globUserDetail['name']!.length > 0) {
   //   // Map decodeData = json.decode(Data);
@@ -45,6 +46,7 @@ class _NewHomePageState extends State<NewHomePage>
   late AnimationController _controller;
   late Animation<double> _animation;
   late Animation<double> _animation2;
+  late bool start;
   List userDetails = [];
   String Data = "";
   String uName = "";
@@ -109,7 +111,7 @@ class _NewHomePageState extends State<NewHomePage>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    false ? Row(
+                    Row(
                       children: [
                         GestureDetector(
                           onTap: () async {
@@ -140,7 +142,7 @@ class _NewHomePageState extends State<NewHomePage>
                           ),
                         ),
                       ],
-                    ) : const Text(""),
+                    ),
                   ],
                 ),
               ),
@@ -228,7 +230,7 @@ class _NewHomePageState extends State<NewHomePage>
                                 TextButton(
                                   onPressed: () {
                                     setIsLogged(false);
-                                    Get.to(() => newLogin());
+                                    Get.offAll(() => newLogin());
                                   },
                                   child: Container(
                                     alignment: Alignment.center,

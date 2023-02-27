@@ -86,9 +86,7 @@ class _newLoginState extends State<newLogin> {
         globUserDetail["gender"] = userDetails[0]["gender"];
         globUserDetail["status"] = userDetails[0]["status"];
         print(globUserDetail);
-        String endata = json.encode(globUserDetail);
-        print(endata);
-        setData(json.encode(endata));
+        setData(globUserDetail);
         print("json encoded");
         Get.off(() => NewHomePage());
         return true;

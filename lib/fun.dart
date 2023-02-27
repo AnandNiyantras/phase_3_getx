@@ -20,14 +20,14 @@ Future<bool> getIsLogged() async {
   return prefs.getBool("isLogged") ?? false;
 }
 
-Future<bool> setData(String data) async {
+Future<bool> setData(Map<String, String> data) async {
   final prefs = await SharedPreferences.getInstance();
-  return prefs.setString("Data", data);
+  return prefs.setString("Data", jsonEncode(data));
 }
 
 Future<String> getData() async {
   final prefs = await SharedPreferences.getInstance();
-  return prefs.getString("Data") ?? " ";
+  return prefs.getString("Data")?? "";
 }
 
 //Text
@@ -490,6 +490,7 @@ class UserDetails extends GetConnect {
               "body": i["body"],
             },
           );
+          break;
         }
       }
       if (userpostfound == false) {

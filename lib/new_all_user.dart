@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'searchUser.dart';
 import 'fun.dart';
 import 'package:get/get.dart';
-import 'dart:ui';
 
 class NewAllUser extends StatefulWidget {
   const NewAllUser({Key? key}) : super(key: key);
@@ -144,7 +141,7 @@ class _NewAllUserState extends State<NewAllUser> {
                                   duration: const Duration(milliseconds: 3000),
                                   child: Container(
                                     margin: const EdgeInsets.only(bottom: 20),
-                                    height: 80,
+                                    height: 100,
                                     decoration: BoxDecoration(
                                       // color: Colors.indigo.withOpacity(0.09),
                                       color: Colors.white,
@@ -176,14 +173,11 @@ class _NewAllUserState extends State<NewAllUser> {
                                                 style:
                                                     TextStyle(fontSize: 17.0),
                                               ),
-                                              subtitle: Flexible(
-                                                flex: 2,
-                                                child: Text(
-                                                  UD.UserDetailsList[index]
-                                                      ["email"],
-                                                  style:
-                                                      TextStyle(fontSize: 15.0),
-                                                ),
+                                              subtitle: Text(
+                                                UD.UserDetailsList[index]
+                                                    ["email"],
+                                                style:
+                                                    TextStyle(fontSize: 15.0),
                                               ),
                                               trailing: Padding(
                                                 padding: const EdgeInsets.only(
@@ -279,13 +273,14 @@ class CustomSearchDelegate extends SearchDelegate {
     );
   }
 
+
   @override
   Widget buildResults(BuildContext context) {
     UD.searchUser(query);
     print(UD.err.value);
 
     return Obx(
-      () => UD.dataFetched.value == 0
+      () => UD.dataFetched.value != 100
           ? const Center(
               child: CircularProgressIndicator(),
             )
@@ -330,7 +325,7 @@ class CustomSearchDelegate extends SearchDelegate {
                                         const Duration(milliseconds: 3000),
                                     child: Container(
                                       margin: const EdgeInsets.only(bottom: 20),
-                                      height: 80,
+                                      height: 100,
                                       decoration: BoxDecoration(
                                         // color: Colors.indigo.withOpacity(0.09),
                                         color: Colors.white,
@@ -363,14 +358,11 @@ class CustomSearchDelegate extends SearchDelegate {
                                                   style:
                                                       TextStyle(fontSize: 17.0),
                                                 ),
-                                                subtitle: Flexible(
-                                                  flex: 2,
-                                                  child: Text(
-                                                    UD.SearchedUserDetailsList[
-                                                        index]["email"],
-                                                    style: TextStyle(
-                                                        fontSize: 15.0),
-                                                  ),
+                                                subtitle: Text(
+                                                  UD.SearchedUserDetailsList[
+                                                      index]["email"],
+                                                  style: TextStyle(
+                                                      fontSize: 15.0),
                                                 ),
                                                 trailing: Padding(
                                                   padding:
@@ -470,7 +462,7 @@ class CustomSearchDelegate extends SearchDelegate {
                           duration: const Duration(milliseconds: 3000),
                           child: Container(
                             margin: const EdgeInsets.only(bottom: 20),
-                            height: 80,
+                            height: 100,
                             decoration: BoxDecoration(
                               // color: Colors.indigo.withOpacity(0.09),
                               color: Colors.white,
@@ -498,12 +490,9 @@ class CustomSearchDelegate extends SearchDelegate {
                                         // posts[index]["name"],
                                         style: TextStyle(fontSize: 17.0),
                                       ),
-                                      subtitle: Flexible(
-                                        flex: 2,
-                                        child: Text(
-                                          searchedUserEmail[index],
-                                          style: TextStyle(fontSize: 15.0),
-                                        ),
+                                      subtitle: Text(
+                                        searchedUserEmail[index],
+                                        style: TextStyle(fontSize: 15.0),
                                       ),
                                       trailing: Padding(
                                         padding:
