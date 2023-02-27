@@ -356,14 +356,16 @@ class CustomSearchDelegate extends SearchDelegate {
                                                 title: Text(
                                                   UD.SearchedUserDetailsList[
                                                       index]["name"],
-                                                  style:
-                                                      TextStyle(fontSize: 17.0),
+                                                  style: const TextStyle(
+                                                    fontSize: 17.0,
+                                                  ),
                                                 ),
                                                 subtitle: Text(
                                                   UD.SearchedUserDetailsList[
                                                       index]["email"],
-                                                  style:
-                                                      TextStyle(fontSize: 15.0),
+                                                  style: const TextStyle(
+                                                    fontSize: 15.0,
+                                                  ),
                                                 ),
                                                 trailing: Padding(
                                                   padding:
@@ -489,11 +491,15 @@ class CustomSearchDelegate extends SearchDelegate {
                                       title: Text(
                                         searchedUserName[index],
                                         // posts[index]["name"],
-                                        style: TextStyle(fontSize: 17.0),
+                                        style: const TextStyle(
+                                          fontSize: 17.0,
+                                        ),
                                       ),
                                       subtitle: Text(
                                         searchedUserEmail[index],
-                                        style: TextStyle(fontSize: 15.0),
+                                        style: const TextStyle(
+                                          fontSize: 15.0,
+                                        ),
                                       ),
                                       trailing: Padding(
                                         padding:
