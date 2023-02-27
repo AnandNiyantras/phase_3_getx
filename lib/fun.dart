@@ -20,12 +20,12 @@ Future<bool> getIsLogged() async {
   return prefs.getBool("isLogged") ?? false;
 }
 
-Future<bool> setData(String data) async{
+Future<bool> setData(String data) async {
   final prefs = await SharedPreferences.getInstance();
   return prefs.setString("Data", data);
 }
 
-Future<String> getData() async{
+Future<String> getData() async {
   final prefs = await SharedPreferences.getInstance();
   return prefs.getString("Data") ?? " ";
 }
@@ -411,12 +411,14 @@ class UserDetails extends GetConnect {
   List SearchedUserPostWithNameList = [].obs;
   List SearchedUserTodoList = [].obs;
   List SearchedUserTodoWithNameList = [].obs;
+  bool userpostfound = false;
+  bool usertodofound = false;
   var _page = 1.obs;
-  var postCount = 0.obs;
   final err = false.obs;
   final dataFetched = false.obs;
 
   increment() => _page++;
+
   length() => UserDetailsList.length;
 
   Future<void> getUser() async {
@@ -476,9 +478,11 @@ class UserDetails extends GetConnect {
     if (UserDetailsList.isEmpty) {
       await getUser();
     }
+    SearchedUserPostWithNameList.clear();
     for (var i in SearchedUserPostList) {
       for (var j in UserDetailsList) {
         if (i["user_id"] == j["id"]) {
+          userpostfound = true;
           SearchedUserPostWithNameList.add(
             {
               'name': j["name"],
@@ -486,16 +490,17 @@ class UserDetails extends GetConnect {
               "body": i["body"],
             },
           );
-          postCount++;
-        } else {
-          SearchedUserPostWithNameList.add(
-            {
-              'name': "No Username",
-              'title': i["title"],
-              "body": i["body"],
-            },
-          );
         }
+      }
+      if (userpostfound == false) {
+        userpostfound = false;
+        SearchedUserPostWithNameList.add(
+          {
+            'name': "No Username",
+            'title': i["title"],
+            "body": i["body"],
+          },
+        );
       }
     }
   }
@@ -504,26 +509,32 @@ class UserDetails extends GetConnect {
     if (UserDetailsList.isEmpty) {
       await getUser();
     }
+    SearchedUserTodoWithNameList.clear();
     for (var i in SearchedUserTodoList) {
       for (var j in UserDetailsList) {
         if (i["user_id"] == j["id"]) {
+          usertodofound = true;
           SearchedUserTodoWithNameList.add(
             {
               'name': j["name"],
               'title': i["title"],
               'due_on': i["due_on"],
-            },
-          );
-        } else {
-          SearchedUserTodoWithNameList.add(
-            {
-              'name': "No Username",
-              'title': i["title"],
-              'due_on': i["due_on"],
               'status': i["status"],
             },
           );
+          break;
         }
+      }
+      if (usertodofound == false) {
+        usertodofound == false;
+        SearchedUserTodoWithNameList.add(
+          {
+            'name': "No Username",
+            'title': i["title"],
+            'due_on': i["due_on"],
+            'status': i["status"],
+          },
+        );
       }
     }
   }

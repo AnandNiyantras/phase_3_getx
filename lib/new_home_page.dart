@@ -109,7 +109,7 @@ class _NewHomePageState extends State<NewHomePage>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    globUserDetail['name']!.isNotEmpty ? Row(
+                    false ? Row(
                       children: [
                         GestureDetector(
                           onTap: () async {
