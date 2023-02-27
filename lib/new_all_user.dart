@@ -170,14 +170,16 @@ class _NewAllUserState extends State<NewAllUser> {
                                                 UD.UserDetailsList[index]
                                                     ["name"],
                                                 // posts[index]["name"],
-                                                style:
-                                                    TextStyle(fontSize: 17.0),
+                                                style: const TextStyle(
+                                                  fontSize: 17.0,
+                                                ),
                                               ),
                                               subtitle: Text(
                                                 UD.UserDetailsList[index]
                                                     ["email"],
-                                                style:
-                                                    TextStyle(fontSize: 15.0),
+                                                style: const TextStyle(
+                                                  fontSize: 15.0,
+                                                ),
                                               ),
                                               trailing: Padding(
                                                 padding: const EdgeInsets.only(
@@ -273,7 +275,6 @@ class CustomSearchDelegate extends SearchDelegate {
     );
   }
 
-
   @override
   Widget buildResults(BuildContext context) {
     UD.searchUser(query);
@@ -361,8 +362,8 @@ class CustomSearchDelegate extends SearchDelegate {
                                                 subtitle: Text(
                                                   UD.SearchedUserDetailsList[
                                                       index]["email"],
-                                                  style: TextStyle(
-                                                      fontSize: 15.0),
+                                                  style:
+                                                      TextStyle(fontSize: 15.0),
                                                 ),
                                                 trailing: Padding(
                                                   padding:
